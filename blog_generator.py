@@ -1,13 +1,9 @@
-# Generate a Blog with OpenAI 📝
-
 import openai
 from dotenv import dotenv_values
 
-# Load API key from .env
 config = dotenv_values('.env')
 openai.api_key = config['API_KEY']
 
-# Function to generate a blog paragraph
 def generate_blog(paragraph_topic):
     response = openai.completions.create(
         model='gpt-3.5-turbo-instruct',
@@ -18,7 +14,6 @@ def generate_blog(paragraph_topic):
     retrieve_blog = response.choices[0].text
     return retrieve_blog
 
-# Loop to generate multiple paragraphs
 keep_writing = True
 
 while keep_writing:
